@@ -12,6 +12,7 @@ import { log } from 'console';
 })
 export class GameComponent {
   pickCardAnimation = false;
+  currentCard: string = '';
   game!: Game;
 
 constructor () {}
@@ -27,7 +28,15 @@ constructor () {}
   }
 
   takeCard(){
+    if(!this.pickCardAnimation) {
+    this.currentCard = this.game.stack.pop() ?? '';
+    console.log(this.currentCard);   
     this.pickCardAnimation = true;
+
+    setTimeout(()=>{
+      this.pickCardAnimation = false;
+    }, 1500);
   }
+}
 
 }
