@@ -38,9 +38,23 @@ export class GameInfoComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     console.log('cc', this.card);
-    let cardNumber = +this.card.split('_')[1];
-    this.title = this.cardAction[cardNumber -1].title;
-    this.descrition = this.cardAction[cardNumber -1].description;
-  }
+    
+    if (this.card) {
+        let cardParts = this.card.split('_');
+        if (cardParts.length > 1) {
+            let cardNumber = +cardParts[1];
+            
+            if (cardNumber > 0 && cardNumber <= this.cardAction.length) {
+                this.title = this.cardAction[cardNumber - 1].title || 'No Title';
+                this.descrition = this.cardAction[cardNumber - 1].description || 'No Description';
+            } else {
+                console.warn('Invalid card number:', cardNumber);
+            }
+        } else {
+            console.warn('Invalid card format:', this.card);
+        }
+    } else {
+        console.warn('No card provided.');
+    }
+  }}
 
-}
