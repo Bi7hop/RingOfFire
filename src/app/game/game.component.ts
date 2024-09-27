@@ -44,16 +44,17 @@ constructor (public dialog: MatDialog) {}
   }
 
   takeCard(){
-    if(!this.pickCardAnimation) {
-    this.currentCard = this.game.stack.pop() ?? '';
-    console.log(this.currentCard);   
-    this.pickCardAnimation = true;
-
-    setTimeout(()=>{
-      this.pickCardAnimation = false;
-    }, 1500);
+    if(!this.pickCardAnimation && this.game.stack.length > 0) {
+      this.currentCard = this.game.stack.pop() ?? '';
+      console.log(this.currentCard);   
+      this.pickCardAnimation = true;
+  
+      setTimeout(() => {
+        this.pickCardAnimation = false;  
+      }, 1500);
+    }
   }
-}
+  
 
 
 openDialog(): void {
