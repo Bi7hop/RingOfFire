@@ -1,6 +1,5 @@
 .player {
     width: 300px;
-    height: 100px;
     display: flex;
     align-items: center;
     border-top-left-radius: 50px;
@@ -11,12 +10,16 @@
         margin-left: 16px;
     }
 
-    background-color: #534BB5 ;
+    background-color: #9d9c9e ;
 
     >img {
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        height: 70px;
         object-fit: cover;
         border-radius: 100%;
     }
+}
+
+.player-active {
+    background-color: #534BB5 !important;
 }
